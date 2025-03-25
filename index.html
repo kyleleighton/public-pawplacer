@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pet Adoption Center</title>
+  <title>Happy Tails</title>
   <style>
     :root {
       --primary: #4a8fed;
@@ -12,6 +12,10 @@
       --text: #333;
       --light-gray: #f5f5f5;
       --border: #eaeaea;
+      --secondary: #ff7e5f;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --radius: 8px;
+      --transition: all 0.3s ease;
     }
 
     * {
@@ -24,18 +28,19 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       color: var(--text);
       line-height: 1.6;
+      background-color: #fafafa;
     }
 
     .container {
-      max-width: 1200px;
       margin: 0 auto;
+      width: 100%;
       padding: 0 20px;
     }
 
     /* Navigation */
     .navbar {
       background-color: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px var(--shadow);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -53,6 +58,11 @@
       font-weight: bold;
       color: var(--primary);
       text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      color: var(--primary-dark);
     }
 
     .nav-links {
@@ -68,66 +78,44 @@
       text-decoration: none;
       color: var(--text);
       font-weight: 500;
-      transition: color 0.3s;
+      padding: 5px 10px;
+      border-radius: var(--radius);
+      transition: var(--transition);
     }
 
     .nav-links a:hover {
       color: var(--primary);
+      background-color: var(--light-gray);
     }
 
     .active {
       color: var(--primary) !important;
-    }
-
-    /* Hero Section */
-    .hero {
-      background-color: var(--light-gray);
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      color: #666;
+      font-weight: 600 !important;
     }
 
     /* Main Content */
     .main-content {
       padding: 60px 0;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-
-    #pawplacer-widget {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      min-height: 600px;
+      min-height: 400px;
       background-color: white;
-      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: 0 5px 15px var(--shadow);
+      margin: 30px auto;
     }
 
     /* Footer */
     .footer {
-      background-color: #333;
+      background-color: #2c3e50;
       color: white;
-      padding: 40px 0;
+      padding: 60px 0 40px;
+      border-top: 5px solid var(--primary);
     }
 
     .footer-content {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      gap: 30px;
     }
 
     .footer-section {
@@ -139,6 +127,19 @@
     .footer-section h3 {
       margin-bottom: 20px;
       font-size: 1.2rem;
+      color: var(--secondary);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 50px;
+      background-color: var(--secondary);
     }
 
     .footer-section ul {
@@ -146,24 +147,19 @@
     }
 
     .footer-section ul li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .footer-section a {
       color: #ddd;
       text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
     }
 
     .footer-section a:hover {
       color: white;
-      text-decoration: underline;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 20px;
-      margin-top: 20px;
-      border-top: 1px solid #444;
+      transform: translateX(5px);
     }
 
     /* Responsive */
@@ -174,25 +170,36 @@
 
       .nav-links {
         margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .nav-links li {
-        margin-left: 15px;
-        margin-right: 15px;
+        margin: 5px 10px;
       }
 
-      .hero h1 {
-        font-size: 2rem;
+      .main-content {
+        margin: 20px auto;
+        padding: 40px 0;
+      }
+
+      .footer-section {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-content {
+        padding: 30px 0;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Navigation -->
   <nav class="navbar">
     <div class="container nav-container">
-      <a href="#" class="logo">Pet Haven</a>
+      <a href="#" class="logo">Happy Tails</a>
       <ul class="nav-links">
         <li><a href="#" class="active">Home</a></li>
         <li><a href="#">About</a></li>
@@ -203,29 +210,18 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>Find Your Forever Friend</h1>
-      <p>Browse our selection of loving pets waiting to find their perfect home. Every pet deserves a loving family.</p>
-    </div>
-  </section>
-
-  <!-- Main Content with PawPlacer Widget -->
   <section class="main-content">
     <div class="container">
-      <h2 class="section-title">Available Pets</h2>
       <div id="pawplacer-widget"></div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>Pet Haven</h3>
-          <p>Finding homes for pets in need since 2020.</p>
+          <h3>Happy Tails Shelters</h3>
+          <p>Finding homes for pets in need since 2025.</p>
         </div>
         <div class="footer-section">
           <h3>Quick Links</h3>
@@ -233,26 +229,14 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Services</a></li>
-            <li><a href="#">Adoption Process</a></li>
-            <li><a href="#">Contact</a></li>
           </ul>
         </div>
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <ul>
-            <li>123 Pet Street, Anytown</li>
-            <li>Phone: (555) 123-4567</li>
-            <li>Email: info@pethaven.com</li>
-          </ul>
-        </div>
+
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Pet Haven. All rights reserved.</p>
-      </div>
+
     </div>
   </footer>
 
-  <!-- PawPlacer Integration -->
   <script src="https://pawplacer.com/embed"></script>
   <script>
     embedPawPlacer('57581587-3c1d-442a-bd43-f20b18db83fd', 'pawplacer-widget');
